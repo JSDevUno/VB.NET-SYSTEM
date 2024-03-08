@@ -32,21 +32,23 @@ Public Class Form1
 
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles ButtonLogin.Click
-        adapter = New MySqlDataAdapter("SELECT * FROM user WHERE email='" & TextBoxEmail.Text & "' AND password='" & TextBoxPassword.Text & "'", connect.open)
+        adapter = New MySqlDataAdapter("SELECT * FROM user WHERE email='" & TextBoxEmail.Text & "' AND password='" & TextBoxPassword.Text & "'", connect.openDB)
         dataTable = New DataTable
         dataTable.Clear()
         adapter.Fill(dataTable)
-        If dataTable.Rows.Count() <= 0 Then
-            MsgBox("Email or Password is Wrong!")
-            connect.close()
+        If TextBoxEmail.Text = "Enter Email..." OrElse TextBoxPassword.Text = "Enter Password..." Then
+            MsgBox("Email or Password field is empty")
         Else
-            MsgBox("Success")
-            Me.Hide()
-            Dim registerForm As New Register()
-            registerForm.Show()
+            If dataTable.Rows.Count() <= 0 Then
+                MsgBox("Email or Password is Wrong!")
+                connect.closeDB()
+            Else
+                Me.Hide()
+                Dim dashboard As New Dashboard()
+                dashboard.Show()
+            End If
         End If
     End Sub
-
 
     Private Sub ButtonLog_Paint(sender As Object, e As PaintEventArgs) Handles ButtonLogin.Paint
         Dim path As New GraphicsPath()
