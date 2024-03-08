@@ -1,6 +1,11 @@
 ﻿Imports System.Drawing.Drawing2D
+Imports MySql.Data.MySqlClient
 
 Public Class Form1
+#Region "Declares"
+    Dim connect As New DBConnection
+    Dim adapter As New MySqlDataAdapter
+    Dim dataTable As DataTable
     Private dragging As Boolean
     Private offsetX, offsetY As Integer
 
@@ -27,7 +32,19 @@ Public Class Form1
 
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles ButtonLogin.Click
-
+        adapter = New MySqlDataAdapter("SELECT * FROM user WHERE email='" & TextBoxEmail.Text & "' AND password='" & TextBoxPassword.Text & "'", connect.open)
+        dataTable = New DataTable
+        dataTable.Clear()
+        adapter.Fill(dataTable)
+        If dataTable.Rows.Count() <= 0 Then
+            MsgBox("Email or Password is Wrong!")
+            connect.close()
+        Else
+            MsgBox("Success")
+            Me.Hide()
+            Dim registerForm As New Register()
+            registerForm.Show()
+        End If
     End Sub
 
 
@@ -114,4 +131,6 @@ Public Class Form1
             TextBoxPassword.Focus()
         End If
     End Sub
+
+#End Region
 End Class
