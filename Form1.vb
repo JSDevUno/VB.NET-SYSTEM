@@ -62,6 +62,9 @@ Public Class Form1
         path.AddArc(Me.Width - 20, Me.Height - 20, 20, 20, 0, 90)
         path.AddArc(0, Me.Height - 20, 20, 20, 90, 90)
         Me.Region = New Region(path)
+
+        closeButton.Image = My.Resources.close_window_30px
+        minimizeButton.Image = My.Resources.minus_30px
     End Sub
 
     Private Sub TextBoxEmail_Enter(sender As Object, e As EventArgs) Handles TextBoxEmail.Enter
@@ -96,6 +99,14 @@ Public Class Form1
             TextBoxPassword.Text = "Enter Password..."
             TextBoxPassword.ForeColor = Color.Silver
         End If
+    End Sub
+
+    Private Sub closeButton_Click(sender As Object, e As EventArgs) Handles closeButton.Click
+        Me.Close()
+    End Sub
+
+    Private Sub minimizeButton_Click(sender As Object, e As EventArgs) Handles minimizeButton.Click
+        Me.WindowState = FormWindowState.Minimized
     End Sub
 
     Private Sub TextBoxEmail_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBoxEmail.KeyPress

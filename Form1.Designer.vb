@@ -22,7 +22,6 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.ButtonLogin = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.labelTitle = New System.Windows.Forms.Label()
@@ -30,7 +29,8 @@ Partial Class Form1
         Me.TextBoxPassword = New System.Windows.Forms.TextBox()
         Me.Register = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.minimizeButton = New System.Windows.Forms.Button()
+        Me.closeButton = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -113,18 +113,30 @@ Partial Class Form1
         Me.Label1.TabIndex = 5
         Me.Label1.Text = "Don't have an account?"
         '
-        'Button1
+        'minimizeButton
         '
-        Me.Button1.BackgroundImage = CType(resources.GetObject("Button1.BackgroundImage"), System.Drawing.Image)
-        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Location = New System.Drawing.Point(864, 12)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(32, 32)
-        Me.Button1.TabIndex = 6
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.minimizeButton.BackgroundImage = Global.APP.My.Resources.Resources.minus_30px
+        Me.minimizeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.minimizeButton.FlatAppearance.BorderSize = 0
+        Me.minimizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.minimizeButton.Location = New System.Drawing.Point(825, 12)
+        Me.minimizeButton.Name = "minimizeButton"
+        Me.minimizeButton.Size = New System.Drawing.Size(33, 33)
+        Me.minimizeButton.TabIndex = 7
+        Me.minimizeButton.UseVisualStyleBackColor = True
+        '
+        'closeButton
+        '
+        Me.closeButton.BackgroundImage = Global.APP.My.Resources.Resources.close_window_30px
+        Me.closeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.closeButton.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.closeButton.FlatAppearance.BorderSize = 0
+        Me.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.closeButton.Location = New System.Drawing.Point(864, 12)
+        Me.closeButton.Name = "closeButton"
+        Me.closeButton.Size = New System.Drawing.Size(32, 32)
+        Me.closeButton.TabIndex = 6
+        Me.closeButton.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -132,7 +144,8 @@ Partial Class Form1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Maroon
         Me.ClientSize = New System.Drawing.Size(908, 586)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.minimizeButton)
+        Me.Controls.Add(Me.closeButton)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Register)
         Me.Controls.Add(Me.TextBoxPassword)
@@ -157,5 +170,6 @@ Partial Class Form1
     Friend WithEvents TextBoxPassword As TextBox
     Friend WithEvents Register As Button
     Friend WithEvents Label1 As Label
-    Friend WithEvents Button1 As Button
+    Friend WithEvents closeButton As Button
+    Friend WithEvents minimizeButton As Button
 End Class
