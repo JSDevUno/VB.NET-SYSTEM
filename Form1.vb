@@ -4,7 +4,7 @@ Public Class Form1
     Private dragging As Boolean
     Private offsetX, offsetY As Integer
 
-    Private Sub Form1_MouseDown(sender As Object, e As MouseEventArgs) Handles MyBase.MouseDown, Panel1.MouseDown
+    Private Sub Form1_MouseDown(sender As Object, e As MouseEventArgs) Handles MyBase.MouseDown, Panel1.MouseDown, labelTitle.MouseDown
         If e.Button = MouseButtons.Left Then
             dragging = True
             offsetX = e.X
@@ -12,14 +12,14 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub Form1_MouseMove(sender As Object, e As MouseEventArgs) Handles MyBase.MouseMove, Panel1.MouseMove
+    Private Sub Form1_MouseMove(sender As Object, e As MouseEventArgs) Handles MyBase.MouseMove, Panel1.MouseMove, labelTitle.MouseMove
         If dragging Then
             Dim newLocation As New Point(Me.Left + e.X - offsetX, Me.Top + e.Y - offsetY)
             Me.Location = newLocation
         End If
     End Sub
 
-    Private Sub Form1_MouseUp(sender As Object, e As MouseEventArgs) Handles MyBase.MouseUp, Panel1.MouseUp
+    Private Sub Form1_MouseUp(sender As Object, e As MouseEventArgs) Handles MyBase.MouseUp, Panel1.MouseUp, labelTitle.MouseUp
         If e.Button = MouseButtons.Left Then
             dragging = False
         End If
